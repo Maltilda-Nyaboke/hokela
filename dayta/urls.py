@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = [
-    path('',views.welcome, name='welcome'),
+    path('',views.excel_upload, name='excel_upload'),
 ]
