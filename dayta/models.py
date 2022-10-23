@@ -1,4 +1,4 @@
-from datetime import date
+import datetime
 from django.db import models
 
 # Create your models here.
@@ -6,7 +6,7 @@ from django.db import models
 class Excel(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length =75)
-    date = models.DateTimeField()
+    date = models.DateField()
     time =models.TimeField()
     shop = models.CharField(max_length =255)
     maziwa_kubwa = models.IntegerField()

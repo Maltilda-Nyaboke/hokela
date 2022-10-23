@@ -1,11 +1,10 @@
-from faulthandler import disable
-from imp import create_dynamic
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Excel
 from.serializer import ExcelSerializer
 import io, csv
+import datetime
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required
 import os
@@ -16,14 +15,14 @@ from django.core.files.storage import FileSystemStorage
 # Create your views here.
 
 # Create your views here.
-def excel_upload(request):
-    data = Excel.objects.all()
-    if request.method=='POST':
-        return render()
-    data_set = csv.read().decode('UTF-8')
+# def excel_upload(request):
+#     data = Excel.objects.all()
+#     if request.method=='POST':
+#         return render()
+#     data_set = csv.read().decode('UTF-8')
 
-    context ={}
-    return render(request,'context')
+#     context ={}
+#     return render(request,'context')
 
 
 @permission_required('admin.can_add_log_enable/disable')
@@ -44,11 +43,11 @@ def excel_upload(request):
     data_set = csv_file.read().decode('utf-8')
     io_string= io.StringIO(data_set)
     next(io_string)
-    for column in csv.reader(io_string):
+    for column in csv.reader(io_string,delimiter=',',quotechar='|'):
         _, created = Excel.objects.update_or_create(
             id = column[0],
             name =column[1],
-            date =column[2],
+            date = datetime.datetime.strptime(column[2],'%m-%d-%Y'),
             time =column[3],
             shop = column[4],
             maziwa_kubwa = column[5],
