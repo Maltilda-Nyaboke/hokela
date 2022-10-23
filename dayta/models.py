@@ -5,12 +5,15 @@ from django.db import models
 
 class excel(models.Model):
     id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length =75)
     date = models.DateTimeField()
     time =models.TimeField()
-    name = models.CharField(max_length =75)
     shop = models.CharField(max_length =255)
     maziwa_kubwa = models.IntegerField()
     maziwa_ndogo = models.IntegerField()
     premimum = models.IntegerField()
     daily_hope = models.IntegerField()
     geocoords = models.IntegerField(null=True)
+
+    def __str__(self):
+        return self.name
