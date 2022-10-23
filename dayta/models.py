@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 
-class excel(models.Model):
+class Excel(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length =75)
     date = models.DateTimeField()
