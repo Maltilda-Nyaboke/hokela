@@ -15,5 +15,11 @@ class Excel(models.Model):
     daily_hope = models.IntegerField()
     geocoords = models.IntegerField(null=True)
 
+    
+    @classmethod
+    def search_by_name(cls, search_term):
+        sale = cls.objects.filter(name__icontains=search_term)
+        return sale          
+
     def __str__(self):
         return self.name
