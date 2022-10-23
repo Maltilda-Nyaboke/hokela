@@ -16,6 +16,11 @@ class Excel(models.Model):
     geocoords = models.IntegerField(null=True)
 
     
+    @property
+    def sales_agents(self):
+        return Excel.objects.all().aggregate(filter=('name'))
+        
+
     @classmethod
     def search_by_name(cls, search_term):
         sale = cls.objects.filter(name__icontains=search_term)
