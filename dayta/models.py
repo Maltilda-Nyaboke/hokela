@@ -6,14 +6,14 @@ from django.db import models
 # d = datetime.time (10:33:45)
 class Excel(models.Model):
     id = models.AutoField(primary_key=True)
-    date = models.DateField()
-    time =models.TimeField()
-    name = models.CharField(max_length =75)
+    date = models.DateField(null=False)
+    time =models.TimeField(null = False)
+    submitted_by = models.CharField(max_length =75)
     shop = models.CharField(max_length =255)
-    maziwa_kubwa = models.IntegerField()
-    maziwa_ndogo = models.IntegerField()
-    premimum = models.IntegerField()
-    daily_hope = models.IntegerField()
+    maziwa_kubwa = models.IntegerField(null=False)
+    maziwa_ndogo = models.IntegerField(null=False)
+    premimum = models.IntegerField(null=False)
+    daily_hope = models.IntegerField(null=False)
     geocoords = models.BigIntegerField(null=True)
 
     
