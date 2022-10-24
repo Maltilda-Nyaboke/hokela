@@ -7,7 +7,7 @@ from django.db import models
 class Excel(models.Model):
     id = models.AutoField(primary_key=True)
     date = models.DateField()
-    time =models.TextField()
+    time =models.TimeField()
     name = models.CharField(max_length =75)
     shop = models.CharField(max_length =255)
     maziwa_kubwa = models.IntegerField()
