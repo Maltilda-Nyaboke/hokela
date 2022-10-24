@@ -1,29 +1,47 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Excel
 from.serializer import ExcelSerializer
 import io, csv
+from .forms import *
 import datetime
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required
 import os
 from django.conf import settings
-from django.core.files.storage import FileSystemStorage
+from django.contrib.auth import login,authenticate,logout
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 
 
 # Create your views here.
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+    else:    
+        form = RegisterForm()
+    return render(request, 'register.html',{'form':form}) 
+# def login_user(request):
+#     form = AuthenticationForm()
+#     context = {'form':form}
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         user = authenticate(request, username=username, password=password)
+#         if user is not None:
+#             login(request,user)
+#             return redirect('/')
+#         else:
+#             return render(request,'registration/login.html',context)  
+#     else:
+#         return render(request, 'registration/login.html',context)  
 
-# Create your views here.
-# def excel_upload(request):
-#     data = Excel.objects.all()
-#     if request.method=='POST':
-#         return render()
-#     data_set = csv.read().decode('UTF-8')
-
-#     context ={}
-#     return render(request,'context')
-
+# def logout_user(request):
+#     logout(request)
+#     return redirect('login')        
 
 @permission_required('admin.can_add_log_enable/disable')
 def excel_upload(request):
