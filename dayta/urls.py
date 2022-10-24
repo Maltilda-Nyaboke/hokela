@@ -9,7 +9,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('',views.excel_upload, name='excel_upload'),
     path('register/',views.register,name ='register'),
-    # path('login/',views.login,name ='login'),
+    path("login", views.login_user, name="login"),
+    path('logout/', views.logout_user, name='logout'),
+
 ]
 
 if settings.DEBUG:
