@@ -29,19 +29,23 @@ def register(request):
     return render(request, 'register.html',{'form':form}) 
 
 def login_user(request):
+    form = AuthenticationForm()
+    context = {'form':form}
     if request.method == 'POST':
-        # form =  LoginForm(request.POST)
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            login(request, user)
-        # Redirect to a success page.
-            return redirect(request,'index.html')
+            login(request,user)
+            return redirect('/')
         else:
-            return redirect(request,'registration/login.html')
-    else: 
-        return render(request,'registration/login.html') 
+            return render(request,'registration/login.html',context)  
+    else:
+        return render(request, 'registration/login.html',context)  
+
+def logout_user(request):
+    logout(request)
+    return redirect('login')         
 
 
 def excel_upload(request):
