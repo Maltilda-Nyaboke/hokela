@@ -43,11 +43,11 @@ def excel_upload(request):
     data_set = csv_file.read().decode('utf-8')
     io_string= io.StringIO(data_set)
     next(io_string)
-    for column in csv.reader(io_string,delimiter=',',quotechar='|'):
+    for column in csv.reader(io_string,delimiter = ',',quotechar='"'):
         _, created = Excel.objects.update_or_create(
             id = column[0],
             name =column[1],
-            date = datetime.datetime.strptime(column[2],'%m-%d-%Y'),
+            date = column[2],
             time =column[3],
             shop = column[4],
             maziwa_kubwa = column[5],

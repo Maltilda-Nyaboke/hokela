@@ -2,18 +2,19 @@ import datetime
 from django.db import models
 
 # Create your models here.
-
+# datetime.time
+# d = datetime.time (10:33:45)
 class Excel(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length =75)
     date = models.DateField()
-    time =models.TimeField()
+    time =models.TimeField(auto_now=False, auto_now_add=False)
     shop = models.CharField(max_length =255)
     maziwa_kubwa = models.IntegerField()
     maziwa_ndogo = models.IntegerField()
     premimum = models.IntegerField()
     daily_hope = models.IntegerField()
-    geocoords = models.IntegerField(null=True)
+    geocoords = models.BigIntegerField(null=True)
 
     
     @property
