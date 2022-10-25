@@ -1,6 +1,15 @@
 # Hokela-Dayta Application
 
 #### Created By Maltilda Nyaboke
+<img src="./images/landing.png">
+<br>
+<img src="./images/register.png">
+<br>
+<img src="./images/login.png">
+<br>
+<img src="./images/admin.png">
+<br>
+<img src="./images/admin_upload.png">
 
 ### Description
 
@@ -81,4 +90,3 @@ After uploading the xlsx file one is not able to view it due to the date format 
 To make a contribution to the code used or any suggestions you can click on the contact link and email me your suggestions.
 
 - Email: matildahnyaboke@gmail.com
-
