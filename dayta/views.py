@@ -10,7 +10,7 @@ import io, csv
 from .forms import *
 import datetime
 from django.contrib import messages
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import permission_required,login_required
 import os
 from django.conf import settings
 from django.contrib.auth import login,authenticate,logout
@@ -47,7 +47,7 @@ def logout_user(request):
     logout(request)
     return redirect('login')         
 
-
+@login_required(login_url='login')
 def excel_upload(request):
     if request.method == 'POST':
         excel_resource = ExcelResource()
