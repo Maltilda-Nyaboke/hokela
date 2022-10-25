@@ -1,4 +1,5 @@
-<div class="shadow-lg continer">
+<div class="shadow-lg container align-center">
+  <a href="https://docs.google.com/spreadsheets/d/1eFTn8njFC8xfGYww_7n28WD7xsDL9Ff3/edit#gid=728492239">Test_data.xlsx</a>
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
    
@@ -6,7 +7,7 @@
           <div class="col-md-6 col-xs-12">
             <div class="x_panel">
               <div class="x_title">
-                <h2>Excel Data Upload</h2>
+                <h2 class="text-center">Excel Data</h2>
               
                 <div class="clearfix"></div>
               </div>
@@ -16,7 +17,7 @@
                    
                   </label>               
                 </div>
-                 
+                
                       <input type="file" name="myfile" class="form-control">
                                <button type="submit" class="btn btn-success" >Upload</button>                            
                               <br/>
